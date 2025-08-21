@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>BuiltWithAiClub - AI-Powered Website Builder</title>
+    <meta name="description" content="Build stunning websites with AI-powered tools. Fast, intuitive, and easy to use." />
+    <meta name="keywords" content="AI, website builder, front-end development, web design, no-code" />
+    <meta name="author" content="BuiltWithAiClub" />
+    <meta name="theme-color" content="#3EB489" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BuiltWithAiClub - AI-Powered Website Builder" />
+    <meta property="og:description" content="Build stunning websites with AI-powered tools. Fast, intuitive, and easy to use." />
+    <meta property="og:image" content="/social-preview.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://builtwithaiclub.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BuiltWithAiClub - AI-Powered Website Builder" />
+    <meta name="twitter:description" content="Build stunning websites with AI-powered tools. Fast, intuitive, and easy to use." />
+    <meta name="twitter:image" content="/social-preview.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      /* GDPR Popup styles */
+      #gdpr-consent {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 380px;
+        width: 90vw;
+        background: linear-gradient(90deg, #3eb489, #3eb489cc);
+        color: #062a1f;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(62, 180, 137, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 9999;
+        animation: slideUp 0.35s ease forwards;
+      }
+      #gdpr-consent p {
+        margin: 0;
+        flex: 1;
+        padding-right: 12px;
+      }
+      #gdpr-consent a {
+        color: #04543f;
+        text-decoration: underline;
+      }
+      #gdpr-consent a:hover {
+        color: #023826;
+      }
+      #gdpr-consent button {
+        background: #062a1f;
+        color: #3eb489;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      #gdpr-consent button:hover {
+        background: #05462e;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translate(-50%, 40px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- GDPR Consent Popup -->
+    <div id="gdpr-consent" style="display:none;">
+      <p>
+        We use cookies to improve your experience. By continuing, you agree to our
+        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+      </p>
+      <button id="gdpr-accept">Accept</button>
+    </div>
+
+    <script>
+      // GDPR Consent logic
+      (function () {
+        const consentKey = 'gdpr-consent';
+        const consentPopup = document.getElementById('gdpr-consent');
+        const acceptBtn = document.getElementById('gdpr-accept');
+
+        function hasConsent() {
+          return localStorage.getItem(consentKey) === 'true';
+        }
+
+        function showConsent() {
+          consentPopup.style.display = 'flex';
+        }
+
+        function acceptConsent() {
+          localStorage.setItem(consentKey, 'true');
+          consentPopup.style.display = 'none';
+        }
+
+        if (!hasConsent()) {
+          showConsent();
+        }
+
+        acceptBtn.addEventListener('click', acceptConsent);
+      })();
+    </script>
+  </body>
+</html>
